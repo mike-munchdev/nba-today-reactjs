@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import GameList from './components/GameList';
-import axios from 'axios';
-
+import TeamService from './services/TeamService';
+import GameService from './services/GameService';
 class App extends Component {
   state = {
     isLoading: false,
@@ -14,16 +14,11 @@ class App extends Component {
   async componentWillMount() {
     try {
       this.setState({ isLoading: true });
-      const teamResponse = await axios.get(
-        'http://localhost:5000/api/v1/teams'
-      );
-      const teams = teamResponse.data;
-      const gamesResponse = await axios.get(
-        'http://localhost:5000/api/v1/games'
-      );
+      const teams = await TeamService.getTeams();
+      let games = await GameService.getGames();
 
       // add full name to home and visting teams
-      const games = gamesResponse.data.map(g => {
+      games = games.map(g => {
         const hTeam = teams.find(t => g.hTeam.teamId === t.teamId);
         const vTeam = teams.find(t => g.vTeam.teamId === t.teamId);
 
