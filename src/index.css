@@ -1,14 +1,44 @@
 body {
-  margin: 0;
-  padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    padding-bottom: 2.5em;
+}
+#loading {
+    margin-top: 2.5rem;
+}
+#alert {
+    margin-top: 2.5rem;
+}
+.hidden {
+    display:none;
+}
+.team-record {
+    font-size: 0.85rem;
+    font-weight: 700;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+.team-score {
+    font-size: 1.25rem;
+    font-weight: 700;
 }
+.game-time {    
+    font-size: 0.80rem;
+}
+.team-row {
+    margin-bottom: 0.5rem !important;
+}
+.team-name {    
+    font-size: 1rem;
+    font-weight: 700;
+}
+.game {
+    margin-bottom: 1em;
+}
+.list-title {
+    font-size: 1rem;
+}
+.game-listing {
+    margin-top: 2.5rem;
+}
+.loading-icon-small {
+  margin-top: 2.5rem;
+}
+
