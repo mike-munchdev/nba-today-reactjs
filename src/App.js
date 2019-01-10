@@ -16,17 +16,7 @@ class App extends Component {
       this.setState({ isLoading: true });
       const teams = await TeamService.getTeams();
       let games = await GameService.getGames();
-
-      // add full name to home and visting teams
-      games = games.map(g => {
-        const hTeam = teams.find(t => g.hTeam.teamId === t.teamId);
-        const vTeam = teams.find(t => g.vTeam.teamId === t.teamId);
-
-        g.vTeam.fullName = vTeam.fullName;
-        g.hTeam.fullName = hTeam.fullName;
-        return g;
-      });
-
+      
       this.setState({
         teams: teams.data,
         upcomingGames: games.filter(g => g.statusNum === 1),
