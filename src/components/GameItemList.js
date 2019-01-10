@@ -3,14 +3,12 @@ import GameItem from './GameItem';
 
 class GameItemList extends Component {
   state = {};
-  componentWillReceiveProps(nextProps) {
-    console.log('nextProps', nextProps);
-  }
+  
   render() {
     return (
       <ul className="list-group">
         {this.props.games
-          ? this.props.games.map(g => <GameItem game={g} />)
+          ? this.props.games.map(g => <GameItem game={g} key={g.gameId} />)
           : ''}
       </ul>
     );

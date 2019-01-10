@@ -66,7 +66,6 @@ class GameItem extends Component {
   };
 
   getTeamLine = (game, team) => {
-    console.log('team', team);
     return (
       <div className="row team-row">
         <div className="col-2">

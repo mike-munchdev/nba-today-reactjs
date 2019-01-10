@@ -1,24 +1,20 @@
 import React, { Component } from 'react';
 import GameList from './components/GameList';
-import TeamService from './services/TeamService';
 import GameService from './services/GameService';
 class App extends Component {
   state = {
     isLoading: false,
     upcomingGames: [],
     liveGames: [],
-    finishedGames: [],
-    teams: []
+    finishedGames: []
   };
 
   async componentWillMount() {
     try {
-      this.setState({ isLoading: true });
-      const teams = await TeamService.getTeams();
+      this.setState({ isLoading: true });      
       let games = await GameService.getGames();
       
-      this.setState({
-        teams: teams.data,
+      this.setState({        
         upcomingGames: games.filter(g => g.statusNum === 1),
         liveGames: games.filter(g => g.statusNum === 2),
         finishedGames: games.filter(g => g.statusNum === 3),
