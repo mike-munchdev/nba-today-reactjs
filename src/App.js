@@ -8,10 +8,11 @@ class App extends Component {
     liveGames: [],
     finishedGames: []
   };
-  getGames = async () => {
+  getGames = async (date) => {
     try {
+      const dateParam = date || new Date();
       this.setState({ isLoading: true });
-      const games = await GameService.getGames();
+      const games = await GameService.getGames(dateParam);
 
       this.setState({
         upcomingGames: games.filter(g => g.statusNum === 1),
@@ -26,7 +27,7 @@ class App extends Component {
     }
   };
   componentWillMount() {
-    this.getGames();
+    this.getGames(new Date());
   }
 
   render() {
@@ -41,13 +42,13 @@ class App extends Component {
         <div className="row">
           <div className="col-xs-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3">
             <button
-              class="btn btn-outline-primary btn-block mt-2"
+              className="btn btn-outline-primary btn-block mt-2"
               onClick={e => this.getGames()}
             >
               Refresh
             </button>
-            <GameList title="Upcoming" games={this.state.upcomingGames} />
             <GameList title="Live" games={this.state.liveGames} />
+            <GameList title="Upcoming" games={this.state.upcomingGames} />            
             <GameList title="Finished" games={this.state.finishedGames} />
           </div>
         </div>
