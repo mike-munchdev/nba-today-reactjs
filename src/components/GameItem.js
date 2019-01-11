@@ -18,8 +18,8 @@ class GameItem extends Component {
     }
   };
 
-  getTeamLogoUrl = tricode => {
-    return `assets/${tricode}.png`;
+  getTeamLogoUrl = triCode => {
+    return `assets/${triCode}.png`;
   };
 
   getGameStart = game => {

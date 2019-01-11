@@ -8,13 +8,12 @@ class App extends Component {
     liveGames: [],
     finishedGames: []
   };
-
-  async componentWillMount() {
+  getGames = async () => {
     try {
-      this.setState({ isLoading: true });      
-      let games = await GameService.getGames();
-      
-      this.setState({        
+      this.setState({ isLoading: true });
+      const games = await GameService.getGames();
+
+      this.setState({
         upcomingGames: games.filter(g => g.statusNum === 1),
         liveGames: games.filter(g => g.statusNum === 2),
         finishedGames: games.filter(g => g.statusNum === 3),
@@ -25,6 +24,9 @@ class App extends Component {
       alert('error occured');
       console.log(e);
     }
+  };
+  componentWillMount() {
+    this.getGames();
   }
 
   render() {
@@ -38,6 +40,12 @@ class App extends Component {
       <div className="container">
         <div className="row">
           <div className="col-xs-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3">
+            <button
+              class="btn btn-outline-primary btn-block mt-2"
+              onClick={e => this.getGames()}
+            >
+              Refresh
+            </button>
             <GameList title="Upcoming" games={this.state.upcomingGames} />
             <GameList title="Live" games={this.state.liveGames} />
             <GameList title="Finished" games={this.state.finishedGames} />
