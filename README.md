@@ -1,3 +1,3 @@
 ## NBA Today ReactJS
 
-NBA Today is a ReactJS application that communicates with https://github.com/mike-munchdev/nba-today-api.
+NBA Today is a ReactJS application that communicates with https://md-nba-today.herokuapp.com/.
